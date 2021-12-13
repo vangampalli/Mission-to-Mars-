@@ -70,13 +70,16 @@ def scrape():
     hemisphere_image_urls = []
 
     for key,value in hemisphere_dict.items():
-        browser.visit(value)
-        time.sleep(2)
-        astro_html = browser.html
-        astro_image = bs(astro_html, 'html.parser')
-        astros = astro_image.find('img', class_='wide-image')['src']
-        hemisphere_image_urls.append({title:key, img_url:'https://marshemispheres.com/'+astros})
-    
+        if len(hemisphere_image_urls) >= 4:
+            hemisphere_image_urls.clear()
+        else:
+            browser.visit(value)
+            time.sleep(2)
+            astro_html = browser.html
+            astro_image = bs(astro_html, 'html.parser')
+            astros = astro_image.find('img', class_='wide-image')['src']
+            hemisphere_image_urls.append({'title':key, 'img_url':'https://marshemispheres.com/'+astros})
+
     mars_data = {"newest_title":newest_title, 
                  "newest_date":newest_date, 
                  "newest_description":newest_description,

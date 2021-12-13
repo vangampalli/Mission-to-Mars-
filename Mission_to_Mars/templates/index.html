@@ -37,16 +37,16 @@
       <p></p>
       <h1>Mars Hemispheres</h1>
       <div class="row">
-        <div class = "col-md-12">
+
           {% for img in mars.hemisphere_image_urls %}
-          <div class="card" style="width: 16rem;">
-            <img class="card-img-top" src={{img.img_url}} alt="Mars Hemisphere" width = '400 px' height = '400 px'>
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" width = '400 px' height = '400 px' src= {{img.img_url}} alt="Mars_Hemisphere">
             <div class="card-body">
-              <h5 class="card-title">"{{img.title}}"</h5>
+              <h5 class="card-title"> {{img.title}} </h5>
             </div>
           </div>
           {% endfor %}
-        </div>
-    </div>
-</body>
+
+     </div>
+ </body>
 </html>
